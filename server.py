@@ -44,6 +44,12 @@ def query():
 
     return render_template("Resultpage.html", results=generate())
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 if __name__ == "__main__":
     #app.run(debug=True)
     app.run(host='0.0.0.0', port='80', debug=False) #do not enable debug while live!!!. It allows remote code execution.
