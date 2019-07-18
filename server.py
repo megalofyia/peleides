@@ -19,9 +19,9 @@ def get_db():
 
 @app.teardown_appcontext
 def close_connection(exception):
-	db = getattr(g, '_database', None)
-	if db is not None:
-		db.close()
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 def query_db(query, args=(), one=False):
     cur = get_db().execute(query, args)
@@ -34,16 +34,15 @@ def query():
     def generate():
         for row in query_db('select * from Establishments where BusinessName=?', [request.args['Search']]):
             yield {
-				"BusinessName": row["BusinessName"],
-				"BusinessType": row["BusinessType"],
-				"AddressLine1": row["AddressLine1"],
-				"AddressLine2": row["AddressLine2"],
-				"PostCode": row["PostCode"],
-				"Rating": row["Rating"]
-			}
+                "BusinessName": row["BusinessName"],
+                "BusinessType": row["BusinessType"],
+                "AddressLine1": row["AddressLine1"],
+                "AddressLine2": row["AddressLine2"],
+                "PostCode": row["PostCode"],
+                "Rating": row["Rating"]
+            }
 
     return render_template("Resultpage.html", results=generate())
-
 
 @app.errorhandler(404)
 def page_not_found(e):
