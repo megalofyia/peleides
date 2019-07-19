@@ -3,8 +3,6 @@ To run the server.py file, you need:
 to install python 3.7 (latest version)
 
 open cmd and enter the following commands (to download the required api's):
-  pip install Jinja2
-  pip install MarkupSafe
-  pip install Werkzeug
-  pip install itsdangerous
-  pip install -U Flask
+  pip install Flask
+
+this also installs itsdangerous, Werkzeug, click, MarkupSafe, and Jinja2
